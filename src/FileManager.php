@@ -24,7 +24,27 @@ class FileManager extends Field implements InteractsWithFilesystem, ResolvesUrl
 
     public ?int $limit = null;
 
+    protected ?array $cols = null;
+
     public Closure $storageCallback;
+
+    protected ?int $gap = null;
+
+    protected bool $showCard = false;
+
+    public function gap(int $gap): static
+    {
+        $this->gap = $gap;
+
+        return $this;
+    }
+
+    public function showCard(bool $showCard = true): static
+    {
+        $this->showCard = $showCard;
+
+        return $this;
+    }
 
     public function __construct($name, $attribute = null, Closure $storageCallback = null)
     {
@@ -43,6 +63,13 @@ class FileManager extends Field implements InteractsWithFilesystem, ResolvesUrl
     public function limit(?int $limit = null): static
     {
         $this->limit = $limit;
+
+        return $this;
+    }
+
+    public function cols(array $cols): static
+    {
+        $this->cols = $cols;
 
         return $this;
     }
@@ -138,6 +165,9 @@ class FileManager extends Field implements InteractsWithFilesystem, ResolvesUrl
             [
                 'multiple' => $this->multiple,
                 'limit' => $this->multiple ? $this->limit : 1,
+                'cols' => $this->cols,
+                'gap' => $this->gap,
+                'showCard' => $this->showCard,
             ],
             $this->options(),
         );
