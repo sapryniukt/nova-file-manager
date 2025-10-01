@@ -59,7 +59,7 @@ export default {
 
         colsClasses() {
             return Object.entries(this.field.cols || {}).map(([breakpoint, cols]) =>
-                breakpoint === 'default' ? cols : `${breakpoint}:grid-cols-${cols}`
+                breakpoint === 'default' ? `grid-cols-${cols}` : `${breakpoint}:grid-cols-${cols}`
             )
         },
 
