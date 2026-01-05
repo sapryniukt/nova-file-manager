@@ -6,7 +6,7 @@
       hidden: field.value.length === 0,
     }"
   >
-    <ScrollArea class="h-80 pr-4">
+    <ScrollArea class="max-h-80 pr-4">
       <h3 v-if="field.showCard" class="text-xl font-bold">{{ field.name }}</h3>
       <PanelItem :field="field" :index="index" class="flex-1 !border-t-0 px-0">
         <template v-if="field.value" v-slot:value>
