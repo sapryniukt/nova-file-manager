@@ -2,38 +2,40 @@
   <component
     :is="component"
     :class="{
-      'flex flex-1 flex-col gap-4 overflow-hidden bg-popover p-4': field.showCard,
+      'flex flex-1 flex-col gap-4 overflow-hidden bg-popover p-4 pr-0': field.showCard,
       hidden: field.value.length === 0,
     }"
   >
-    <h3 v-if="field.showCard" class="text-xl font-bold">{{ field.name }}</h3>
-    <PanelItem :field="field" :index="index" class="flex-1 !border-t-0 px-0">
-      <template v-if="field.value" v-slot:value>
-        <div class="nova-file-manager">
-          <div :class="darkMode && 'dark'">
-            <ul
-              :class="['grid w-full', { [`gap-${field.gap || 2}`]: field.gap }, ...colsClasses]"
-              role="group"
-            >
-              <template v-for="file in field.value" :key="file.id">
-                <FieldCard
-                  :field="field"
-                  :file="mapEntity(file)"
-                  :attribute="field.attribute"
-                  :detail="true"
-                  :on-copy="copy"
-                />
-                <PreviewModal
-                  :file="mapEntity(file)"
-                  v-if="!!preview && preview?.id === mapEntity(file)?.id"
-                  :read-only="true"
-                />
-              </template>
-            </ul>
+    <ScrollArea class="h-80 pr-4">
+      <h3 v-if="field.showCard" class="text-xl font-bold">{{ field.name }}</h3>
+      <PanelItem :field="field" :index="index" class="flex-1 !border-t-0 px-0">
+        <template v-if="field.value" v-slot:value>
+          <div class="nova-file-manager">
+            <div :class="darkMode && 'dark'">
+              <ul
+                :class="['grid w-full', { [`gap-${field.gap || 2}`]: field.gap }, ...colsClasses]"
+                role="group"
+              >
+                <template v-for="file in field.value" :key="file.id">
+                  <FieldCard
+                    :field="field"
+                    :file="mapEntity(file)"
+                    :attribute="field.attribute"
+                    :detail="true"
+                    :on-copy="copy"
+                  />
+                  <PreviewModal
+                    :file="mapEntity(file)"
+                    v-if="!!preview && preview?.id === mapEntity(file)?.id"
+                    :read-only="true"
+                  />
+                </template>
+              </ul>
+            </div>
           </div>
-        </div>
-      </template>
-    </PanelItem>
+        </template>
+      </PanelItem>
+    </ScrollArea>
   </component>
 </template>
 
