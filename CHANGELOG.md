@@ -2,9 +2,9 @@
 
 All notable changes to `nova-file-manager` will be documented in this file
 
-## 1.0.0.inb.1 - 2026-06-09
+## 1.0.0.1 - 2026-06-09
 
-Internal build based on [oneduo v1.0.0](https://github.com/oneduo/nova-file-manager/releases/tag/v1.0.0) with DetailField enhancements ported from `feature/0.5.1`–`feature/0.5.5`.
+Internal build 1 (inb.1) based on [oneduo v1.0.0](https://github.com/oneduo/nova-file-manager/releases/tag/v1.0.0) with DetailField enhancements ported from `feature/0.5.1`–`feature/0.5.5`.
 
 ### What's Changed
 
