@@ -41,6 +41,12 @@ class FileManager extends Field implements Cover, InteractsWithFilesystemContrac
 
     public bool $simple = false;
 
+    protected ?array $cols = null;
+
+    protected ?int $gap = null;
+
+    protected bool $showCard = false;
+
     public function __construct($name, $attribute = null, ?Closure $storageCallback = null)
     {
         parent::__construct($name, $attribute);
@@ -75,6 +81,27 @@ class FileManager extends Field implements Cover, InteractsWithFilesystemContrac
     public function asHtml(): static
     {
         $this->asHtml = true;
+
+        return $this;
+    }
+
+    public function cols(array $cols): static
+    {
+        $this->cols = $cols;
+
+        return $this;
+    }
+
+    public function gap(int $gap): static
+    {
+        $this->gap = $gap;
+
+        return $this;
+    }
+
+    public function showCard(bool $showCard = true): static
+    {
+        $this->showCard = $showCard;
 
         return $this;
     }
@@ -287,6 +314,9 @@ class FileManager extends Field implements Cover, InteractsWithFilesystemContrac
                 'limit' => $this->multiple ? $this->limit : 1,
                 'asHtml' => $this->asHtml,
                 'wrapper' => $this->wrapper,
+                'cols' => $this->cols,
+                'gap' => $this->gap,
+                'showCard' => $this->showCard,
             ],
             $this->options(),
         );

@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 const toRgba = (hexCode, opacity = 50) => {
   let hex = hexCode.replace('#', '');
 
@@ -30,6 +32,19 @@ module.exports = {
   content: ['./resources/**/*{js,vue,blade.php,ts}'],
   darkMode: 'class',
   important: '.nova-file-manager',
+  safelist: [
+    {
+      pattern:
+        /(gap-\d+|col-span-\d+|grid-rows-.*|grid-cols-.*|order-\d+|overflow-.*|(h|min-h|max-h)-.*|auto-rows-.*|p-\d+|p[trbl]-\d+)/,
+      variants: ['sm', 'md', 'lg', 'xl', '2xl', '3xl'],
+    },
+  ],
+  theme: {
+    screens: {
+      ...defaultTheme.screens,
+      '3xl': '1960px',
+    },
+  },
   plugins: [
     function ({ addUtilities, theme }) {
       const utilities = {

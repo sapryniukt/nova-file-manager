@@ -2,6 +2,19 @@
 
 All notable changes to `nova-file-manager` will be documented in this file
 
+## 1.0.0.inb.1 - 2026-06-09
+
+Internal build based on [oneduo v1.0.0](https://github.com/oneduo/nova-file-manager/releases/tag/v1.0.0) with DetailField enhancements ported from `feature/0.5.1`–`feature/0.5.5`.
+
+### What's Changed
+
+* feat(detail): add `cols()`, `gap()`, and `showCard()` fluent API on `FileManager` field
+* feat(detail): configurable responsive grid layout on DetailField
+* feat(detail): optional Card wrapper with scrollable content area
+* feat(detail): add `3xl` Tailwind breakpoint and safelist for dynamic grid/gap classes
+
+**Base**: oneduo/nova-file-manager v1.0.0
+
 ## v0.16.0 - 2025-06-30
 
 ### What's Changed
